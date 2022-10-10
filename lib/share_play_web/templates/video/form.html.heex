@@ -1,0 +1,13 @@
+<section>
+  <%= form_for @changeset, @route, fn f -> %>
+    <%= label f, :name %>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
+
+    <%= label f, :url %>
+    <%= text_input f, :url, class: "form-control" %>
+    <%= error_tag f, :url %>
+
+    <%= submit "Submit" %>
+  <% end %>
+</section>
