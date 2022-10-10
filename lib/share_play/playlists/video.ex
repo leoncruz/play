@@ -2,9 +2,12 @@ defmodule SharePlay.Playlists.Video do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias SharePlay.Playlists.Playlist
+
   schema "videos" do
     field :name, :string
     field :url, :string
+    belongs_to :playlist, Playlist
 
     timestamps()
   end
