@@ -1,4 +1,4 @@
-defmodule SharePlay.Playlist.Video do
+defmodule SharePlay.Playlists.Video do
   use Ecto.Schema
   import Ecto.Changeset
 
