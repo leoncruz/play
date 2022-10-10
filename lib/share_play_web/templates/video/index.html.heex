@@ -1,18 +1,23 @@
 <section class="phx-hero">
   <h1>Videos</h1>
-</section>
-
-<section class="float-right">
   <%= link("New Video", to: Routes.video_path(@conn, :new), class: "button button-outline") %>
 </section>
 
-<section class="row">
-  <ul>
-    <%= for video <- @videos do %>
-      <li>
-        <strong><%= video.name %></strong> -
-        <%= link(video.url, to: video.url) %>
-      </li>
-    <% end %>
-  </ul>
+
+<section class="container">
+  <%= for video <- @videos do %>
+    <div class="row">
+      <div class="column">
+        <strong><%= video.name %></strong>
+      </div>
+
+      <div class="column column-offset-20">
+        <%= link("Watch", to: video.url) %>
+      </div>
+
+      <div class="column">
+        <span class="float-right"><%= link("Edit", to: Routes.video_path(@conn, :edit, video)) %></span>
+      </div>
+    </div>
+  <% end %>
 </section>
