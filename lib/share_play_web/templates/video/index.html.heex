@@ -7,16 +7,19 @@
 <section class="container">
   <%= for video <- @videos do %>
     <div class="row">
-      <div class="column">
+      <div class="column column-70">
         <strong><%= video.name %></strong>
       </div>
 
-      <div class="column column-offset-20">
+      <div class="column column-10">
         <%= link("Watch", to: video.url) %>
       </div>
 
-      <div class="column">
-        <span class="float-right"><%= link("Edit", to: Routes.video_path(@conn, :edit, video)) %></span>
+      <div class="column column-10">
+        <span><%= link("Edit", to: Routes.video_path(@conn, :edit, video)) %></span>
+      </div>
+      <div class="column column-10">
+        <span><%= link("Remove", to: Routes.video_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"]) %></span>
       </div>
     </div>
   <% end %>

@@ -61,4 +61,20 @@ defmodule SharePlayWeb.VideoController do
         |> render("edit.html", video: changeset)
     end
   end
+
+  def delete(conn, %{"id" => id}) do
+    video = Repo.get(Video, id)
+
+    case Repo.delete(video) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Video deleted successfully.")
+        |> redirect(to: Routes.video_path(conn, :index))
+
+      {:error, _} ->
+        conn
+        |> put_flash(:alert, "Video cannot be delted successfully.")
+        |> render("index.html", conn: conn)
+    end
+  end
 end
