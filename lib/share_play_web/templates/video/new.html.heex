@@ -1,0 +1,17 @@
+<section class="phx-hero">
+  <h1>New Video</h1>
+</section>
+
+<section>
+  <%= form_for @video, Routes.video_path(@conn, :create), fn f -> %>
+    <%= label f, :name %>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
+
+    <%= label f, :url %>
+    <%= text_input f, :url, class: "form-control" %>
+    <%= error_tag f, :url %>
+
+    <%= submit "Submit" %>
+  <% end %>
+</section>
