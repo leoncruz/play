@@ -4,8 +4,12 @@ defmodule SharePlayWeb.VideoController do
   alias SharePlay.Repo
   alias SharePlay.Playlist.Video
 
+  import Ecto.Query
+
   def index(conn, _params) do
-    videos = Repo.all(Video)
+    query = from(v in Video, order_by: [desc: v.updated_at])
+
+    videos = Repo.all(query)
 
     render(conn, "index.html", videos: videos)
   end
