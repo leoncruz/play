@@ -3,6 +3,7 @@ defmodule SharePlayWeb.VideoController do
 
   alias SharePlay.Playlists
   alias SharePlay.Playlists.Video
+  alias SharePlay.Repo
 
   def index(conn, _params) do
     videos = Playlists.list_videos()
@@ -11,13 +12,20 @@ defmodule SharePlayWeb.VideoController do
   end
 
   def new(conn, _params) do
-    video = Playlists.video_changeset(%Video{})
+    video =
+      %Video{}
+      |> Repo.preload(:playlist)
+      |> Playlists.video_changeset()
 
-    render(conn, "new.html", video: video)
+    playlists = Playlists.list_playlists()
+
+    render(conn, "new.html", video: video, playlists: playlists)
   end
 
   def create(conn, %{"video" => video_params}) do
     changeset = Playlists.video_changeset(%Video{}, video_params)
+
+    playlists = Playlists.list_playlists()
 
     case Playlists.create_video(changeset) do
       :ok ->
@@ -28,16 +36,27 @@ defmodule SharePlayWeb.VideoController do
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_flash(:alert, "Video cannot be created.")
-        |> render("new.html", video: changeset)
+        |> render("new.html", video: changeset, playlists: playlists)
     end
   end
 
   def edit(conn, %{"id" => video_id}) do
     video = Playlists.get_video(video_id)
 
-    video_changeset = Playlists.video_changeset(video)
+    video_changeset =
+      video
+      |> Repo.preload(:playlist)
+      |> Playlists.video_changeset()
 
-    render(conn, "edit.html", video: video, video_changeset: video_changeset)
+    playlists = Playlists.list_playlists()
+
+    render(
+      conn,
+      "edit.html",
+      video: video,
+      video_changeset: video_changeset,
+      playlists: playlists
+    )
   end
 
   def update(conn, %{"id" => id, "video" => video_params}) do

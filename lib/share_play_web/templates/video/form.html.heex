@@ -1,12 +1,28 @@
 <section>
   <%= form_for @changeset, @route, fn f -> %>
-    <%= label f, :name %>
-    <%= text_input f, :name, class: "form-control" %>
-    <%= error_tag f, :name %>
+    <fieldset>
+      <%= label f, :name %>
+      <%= text_input f, :name %>
+      <%= error_tag f, :name %>
+    </fieldset>
 
-    <%= label f, :url %>
-    <%= text_input f, :url, class: "form-control" %>
-    <%= error_tag f, :url %>
+    <fieldset>
+      <%= label f, :url %>
+      <%= text_input f, :url %>
+      <%= error_tag f, :url %>
+    </fieldset>
+
+    <fieldset>
+      <%= label f, :playlist_id %>
+      <%= select f, :playlist_id,
+        Enum.map(
+          @playlists,
+          fn (p) -> [value: p.id, key: p.name] end
+        ),
+        prompt: "Select a Playlist"
+      %>
+      <%= error_tag f, :playlist_id %>
+    </fieldset>
 
     <%= submit "Submit" %>
   <% end %>

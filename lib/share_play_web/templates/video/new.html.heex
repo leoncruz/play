@@ -4,6 +4,7 @@
 
 <%= render "form.html",
     changeset: @video,
+    playlists: @playlists,
     route: Routes.video_path(@conn, :create),
     conn: @conn
 %>

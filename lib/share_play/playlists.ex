@@ -1,6 +1,6 @@
 defmodule SharePlay.Playlists do
   alias SharePlay.Repo
-  alias SharePlay.Playlists.Video
+  alias SharePlay.Playlists.{Video, Playlist}
 
   import Ecto.Query
 
@@ -39,5 +39,11 @@ defmodule SharePlay.Playlists do
       {:ok, _} -> :ok
       {:error, _} -> :error
     end
+  end
+
+  def list_playlists do
+    query = from(p in Playlist, order_by: [desc: p.updated_at])
+
+    Repo.all(query)
   end
 end
