@@ -1,0 +1,13 @@
+<section>
+  <fieldset>
+    <strong>Name</strong>
+    <%= @playlist.name %>
+  </fieldset>
+
+  <fieldset>
+    <strong>Category</strong>
+    <%= @playlist.category %>
+  </fieldset>
+
+  <%= link("Voltar", to: Routes.playlist_path(@conn, :index)) %>
+</section>

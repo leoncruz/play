@@ -46,4 +46,27 @@ defmodule SharePlay.Playlists do
 
     Repo.all(query)
   end
+
+  def playlist_changeset(playlist, attrs \\ %{}) do
+    Playlist.changeset(playlist, attrs)
+  end
+
+  def create_playlist(attrs) do
+    %Playlist{}
+    |> Playlist.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def get_playlist(id) do
+    Repo.get(Playlist, id)
+  end
+
+  def delete_playlist(id) do
+    playlist = get_playlist(id)
+
+    case Repo.delete(playlist) do
+      {:ok, _} -> :ok
+      {:error, _} -> :error
+    end
+  end
 end

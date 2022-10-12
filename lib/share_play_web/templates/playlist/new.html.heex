@@ -1,0 +1,17 @@
+<section>
+  <%= form_for @playlist, Routes.playlist_path(@conn, :create), fn f -> %>
+    <fieldset>
+      <%= label f, :name %>
+      <%= text_input f, :name %>
+      <%= error_tag f, :name %>
+    </fieldset>
+
+    <fieldset>
+      <%= label f, :category %>
+      <%= text_input f, :category %>
+      <%= error_tag f, :category %>
+    </fieldset>
+
+    <%= submit "Submit" %>
+  <% end %>
+</section>

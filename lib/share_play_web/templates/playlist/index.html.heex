@@ -1,0 +1,35 @@
+<section class="phx-hero">
+  <h1>Playlists</h1>
+  <%=
+    link("New Playlist",
+    to: Routes.playlist_path(@conn, :new),
+    class: "button button-outline")
+  %>
+</section>
+
+<section class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Play</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for playlist <- @playlists do %>
+        <tr>
+          <td><%= playlist.name %></td>
+          <td><%= playlist.category %></td>
+          <td>
+            <%= link("Play", to: Routes.playlist_path(@conn, :show, playlist)) %>
+          </td>
+          <td>
+            <%= link("Delete", to: Routes.playlist_path(@conn, :delete, playlist), method: :delete, data: [confirm: "Are you sure?"]) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

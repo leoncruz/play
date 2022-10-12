@@ -17,8 +17,9 @@ defmodule SharePlayWeb.Router do
   scope "/", SharePlayWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PlaylistController, :index
     resources "/videos", VideoController, except: [:show]
+    resources "/playlist", PlaylistController
   end
 
   # Other scopes may use custom stacks.
