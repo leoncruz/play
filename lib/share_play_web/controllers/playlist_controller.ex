@@ -28,7 +28,7 @@ defmodule SharePlayWeb.PlaylistController do
       {:error, changeset} ->
         conn
         |> put_flash(:alert, "Playlist cannot be created.")
-        |> render(conn, "new.html", playlist: changeset)
+        |> render("new.html", playlist: changeset)
     end
   end
 
