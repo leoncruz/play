@@ -19,7 +19,7 @@ defmodule SharePlayWeb.Router do
 
     get "/", PlaylistController, :index
     resources "/videos", VideoController, except: [:show]
-    resources "/playlist", PlaylistController
+    resources "/playlists", PlaylistController
   end
 
   # Other scopes may use custom stacks.
