@@ -1,5 +1,7 @@
 const link = document.getElementById('add_videos');
 
+if(!link) return;
+
 link.addEventListener('click', (event) => {
   event.preventDefault();
 
