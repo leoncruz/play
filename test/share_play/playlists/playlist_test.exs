@@ -3,7 +3,7 @@ defmodule SharePlay.PlaylistTest do
 
   alias SharePlay.Playlists.Playlist
 
-  describe "changeet" do
+  describe "changeset/1" do
     test "name, category and video must be required" do
       changeset = Playlist.changeset(%Playlist{}, %{name: "", category: "", videos: []})
 
