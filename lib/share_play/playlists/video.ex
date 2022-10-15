@@ -18,4 +18,11 @@ defmodule SharePlay.Playlists.Video do
     |> cast(attrs, [:name, :url, :playlist_id])
     |> validate_required([:name, :url, :playlist_id])
   end
+
+  @doc false
+  def playlist_video_changeset(video, attrs \\ %{}) do
+    video
+    |> cast(attrs, [:name, :url])
+    |> validate_required([:name, :url])
+  end
 end
