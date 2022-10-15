@@ -1,29 +1,41 @@
-<section>
-  <%= form_for @changeset, @route, fn f -> %>
-    <fieldset>
-      <%= label f, :name %>
-      <%= text_input f, :name %>
-      <%= error_tag f, :name %>
-    </fieldset>
+<%= form_for @changeset, @route, fn f -> %>
+  <div class="columns is-centered">
+    <div class="column is-6">
+      <div class="field">
+        <%= label f, :name, class: "label" %>
 
-    <fieldset>
-      <%= label f, :url %>
-      <%= text_input f, :url %>
-      <%= error_tag f, :url %>
-    </fieldset>
+        <div class="control">
+          <%= text_input f, :name, class: "input" %>
+          <p class="help"> <%= error_tag f, :name %></p>
+        </div>
+      </div>
 
-    <fieldset>
-      <%= label f, :playlist_id %>
-      <%= select f, :playlist_id,
-        Enum.map(
-          @playlists,
-          fn (p) -> [value: p.id, key: p.name] end
-        ),
-        prompt: "Select a Playlist"
-      %>
-      <%= error_tag f, :playlist_id %>
-    </fieldset>
+      <div class="field">
+        <%= label f, :url, class: "label" %>
 
-    <%= submit "Submit" %>
-  <% end %>
-</section>
+        <div class="control">
+          <%= text_input f, :url, class: "input" %>
+        </div>
+        <p class="help"> <%= error_tag f, :url %></p>
+      </div>
+
+      <div class="field">
+        <%= label f, :playlist_id, class: "label" %>
+        <div class="control">
+          <div class="select is-fullwidth">
+            <%= select f, :playlist_id,
+              Enum.map(
+                @playlists,
+                fn (p) -> [value: p.id, key: p.name] end
+              ),
+              prompt: "Select a Playlist"
+              %>
+          </div>
+        </div>
+        <p class="help"> <%= error_tag f, :playlist_id %></p>
+      </div>
+
+      <%= submit "Submit", class: "button has-text-white-bis has-background-black-bis" %>
+    </div>
+  </div>
+<% end %>

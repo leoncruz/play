@@ -1,26 +1,48 @@
-<section class="phx-hero">
-  <h1>Videos</h1>
-  <%= link("New Video", to: Routes.video_path(@conn, :new), class: "button button-outline") %>
+<section class="hero">
+  <div class="hero-body">
+    <p class="title">Videos</p>
+    <p>
+      <%= link("Add a Video", to: Routes.video_path(@conn, :new)) %>
+    </p>
+  </div>
 </section>
 
+<section>
+  <div class="container">
+    <%= for video <- @videos do %>
+      <div class="columns mb-4">
+        <div class="column is-6 is-offset-1">
+          <p>
+            <span class="title is-5"><%= String.slice(video.name, 0, 30) %></span>
+          </p>
+        </div>
 
-<section class="container">
-  <%= for video <- @videos do %>
-    <div class="row">
-      <div class="column column-70">
-        <strong><%= video.name %></strong>
-      </div>
+        <div class="column">
+          <%= link(to: video.url) do %>
+            <span class="material-symbols-outlined">visibility</span>
+          <% end %>
+        </div>
 
-      <div class="column column-10">
-        <%= link("Watch", to: video.url) %>
-      </div>
+        <div class="column">
+          <%= link(to: Routes.video_path(@conn, :edit, video)) do %>
+            <span class="material-symbols-outlined">edit</span>
+          <% end %>
+        </div>
 
-      <div class="column column-10">
-        <span><%= link("Edit", to: Routes.video_path(@conn, :edit, video)) %></span>
+        <div class="column">
+          <span>
+            <%=
+              link(
+                to: Routes.video_path(@conn, :delete, video),
+                method: :delete,
+                data: [confirm: "Are you sure?"]
+              ) do
+              %>
+              <span class="material-symbols-outlined">delete</span>
+            <% end %>
+          </span>
+        </div>
       </div>
-      <div class="column column-10">
-        <span><%= link("Remove", to: Routes.video_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"]) %></span>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </section>

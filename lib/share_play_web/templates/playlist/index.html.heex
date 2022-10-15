@@ -1,35 +1,43 @@
-<section class="phx-hero">
-  <h1>Playlists</h1>
-  <%=
-    link("New Playlist",
-    to: Routes.playlist_path(@conn, :new),
-    class: "button button-outline")
-  %>
+<section class="hero">
+  <div class="hero-body">
+    <p class="title">Playlists</p>
+    <p>
+      <%= link("Add a Playlist", to: Routes.playlist_path(@conn, :new)) %>
+    </p>
+  </div>
 </section>
 
-<section class="container">
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Play</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= for playlist <- @playlists do %>
-        <tr>
-          <td><%= playlist.name %></td>
-          <td><%= playlist.category %></td>
-          <td>
-            <%= link("Play", to: Routes.playlist_path(@conn, :show, playlist)) %>
-          </td>
-          <td>
-            <%= link("Delete", to: Routes.playlist_path(@conn, :delete, playlist), method: :delete, data: [confirm: "Are you sure?"]) %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<section>
+  <div class="container">
+    <%= for playlist <- @playlists do %>
+      <div class="columns">
+        <div class="column is-6 is-offset-1">
+          <p class="title is-4"><%= playlist.name %></p>
+        </div>
+
+        <div class="column">
+          <%= link(to: Routes.playlist_path(@conn, :show, playlist)) do %>
+            <span class="material-symbols-outlined">visibility</span>
+          <% end %>
+        </div>
+
+        <div class="column">
+          <%= link(to: Routes.playlist_path(@conn, :show, playlist)) do %>
+            <span class="material-symbols-outlined">edit</span>
+          <% end %>
+        </div>
+
+        <div class="column">
+          <%= link(
+            to: Routes.playlist_path(@conn, :delete, playlist),
+            method: :delete,
+            data: [confirm: "Are you sure?"]) do
+          %>
+
+            <span class="material-symbols-outlined">delete</span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </section>

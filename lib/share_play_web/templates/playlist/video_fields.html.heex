@@ -1,20 +1,23 @@
 <%= inputs_for @f, :videos, fn v -> %>
-  <div>
-    <fieldset>
-      <%= label v, :name %>
-      <%= text_input v, :name %>
-      <%= error_tag v, :url %>
-    </fieldset>
+  <div class="columns is-centered">
+    <div class="column is-11">
+      <div class="field">
+        <%= label v, :name, class: "label" %>
 
-    <fieldset>
-      <%= label v, :url %>
-      <%= text_input v, :url %>
-      <%= error_tag v, :url %>
-    </fieldset>
+        <div class="control">
+          <%= text_input v, :name, class: "input" %>
+          <p class="help"> <%= error_tag v, :name %></p>
+        </div>
+      </div>
 
-    <fieldset>
-      <%= label v, :delete, "Delete", class: "control-label" %>
-      <%= checkbox v, :delete %>
-    </fieldset>
+      <div class="field">
+        <%= label v, :url, class: "label" %>
+
+        <div class="control">
+          <%= text_input v, :url, class: "input" %>
+        </div>
+        <p class="help"> <%= error_tag v, :url %></p>
+      </div>
+    </div>
   </div>
 <% end %>

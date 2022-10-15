@@ -1,10 +1,13 @@
-<section class="phx-hero">
-  <h1><%= @video.name %></h1>
+<section class="hero">
+  <div class="hero-body">
+    <p class="title"><%= @video.name %></p>
+    <p><%= link("back", to: Routes.video_path(@conn, :index)) %></p>
+  </div>
 </section>
 
 <%= render "form.html",
-    changeset: @video_changeset,
-    playlists: @playlists,
-    route: Routes.video_path(@conn, :update, @video),
-    conn: @conn
+  changeset: @video_changeset,
+  playlists: @playlists,
+  route: Routes.video_path(@conn, :update, @video),
+  conn: @conn
 %>

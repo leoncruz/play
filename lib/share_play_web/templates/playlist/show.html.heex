@@ -1,13 +1,35 @@
+<section class="hero">
+  <div class="hero-body">
+    <p class="title"><%= @playlist.name %></p>
+    <p class="subtitle"><%= @playlist.category %></p>
+
+    <%= link("back", to: Routes.playlist_path(@conn, :index)) %>
+  </div>
+</section>
+
 <section>
-  <fieldset>
-    <strong>Name</strong>
-    <%= @playlist.name %>
-  </fieldset>
+  <% [first_video | rest] = @playlist.videos %>
 
-  <fieldset>
-    <strong>Category</strong>
-    <%= @playlist.category %>
-  </fieldset>
+  <div class="tile is-ancestor">
+    <div class="title-is-parent">
+      <div class="tile is-child">
+        <div class="content">
+          <%= for video <- rest do %>
+            <p class="title is-6"><%= video.name %></p>
 
-  <%= link("Voltar", to: Routes.playlist_path(@conn, :index)) %>
+            <iframe width="100%" height="100%" src={video.url}></iframe>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-parent">
+      <div class="tile is-child">
+        <p class="title has-text-centered">
+          <%= first_video.name %>
+        </p>
+          <iframe width="100%" height="500" src={first_video.url}></iframe>
+      </div>
+    </div>
+  </div>
 </section>
