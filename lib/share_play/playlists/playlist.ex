@@ -16,6 +16,7 @@ defmodule SharePlay.Playlists.Playlist do
   def changeset(playlist, attrs \\ %{}) do
     playlist
     |> cast(attrs, [:name, :category])
+    |> cast_assoc(:videos, required: true, with: &Video.playlist_video_changeset/2)
     |> validate_required([:name, :category])
   end
 end
