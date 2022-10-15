@@ -1,4 +1,4 @@
-<section>
+<section class="container">
   <%= form_for @playlist, Routes.playlist_path(@conn, :create), fn f -> %>
     <fieldset>
       <%= label f, :name %>
@@ -11,6 +11,14 @@
       <%= text_input f, :category %>
       <%= error_tag f, :category %>
     </fieldset>
+
+    <section class="container">
+      <h3>Videos</h3>
+
+      <%= link_to_add_video_fields() %>
+
+      <div id="videos-container"></div>
+    </section>
 
     <%= submit "Submit" %>
   <% end %>

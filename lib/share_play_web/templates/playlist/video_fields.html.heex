@@ -1,0 +1,20 @@
+<%= inputs_for @f, :videos, fn v -> %>
+  <div>
+    <fieldset>
+      <%= label v, :name %>
+      <%= text_input v, :name %>
+      <%= error_tag v, :url %>
+    </fieldset>
+
+    <fieldset>
+      <%= label v, :url %>
+      <%= text_input v, :url %>
+      <%= error_tag v, :url %>
+    </fieldset>
+
+    <fieldset>
+      <%= label v, :delete, "Delete", class: "control-label" %>
+      <%= checkbox v, :delete %>
+    </fieldset>
+  </div>
+<% end %>

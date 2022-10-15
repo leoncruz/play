@@ -2,7 +2,7 @@ defmodule SharePlayWeb.PlaylistController do
   use SharePlayWeb, :controller
 
   alias SharePlay.Playlists
-  alias SharePlay.Playlists.Playlist
+  alias SharePlay.Playlists.{Playlist, Video}
 
   def index(conn, _params) do
     playlists = Playlists.list_playlists()
@@ -12,7 +12,7 @@ defmodule SharePlayWeb.PlaylistController do
 
   def new(conn, _params) do
     playlist =
-      %Playlist{}
+      %Playlist{videos: [%Video{}]}
       |> Playlists.playlist_changeset()
 
     render(conn, "new.html", playlist: playlist)
