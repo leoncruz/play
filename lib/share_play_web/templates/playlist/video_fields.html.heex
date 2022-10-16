@@ -18,6 +18,17 @@
         </div>
         <p class="help"> <%= error_tag v, :url %></p>
       </div>
+
+      <%= if v.data.id do %>
+        <div class="field is-horizontal">
+          <%= label v, :delete, "Delete?", class: "label mr-2" %>
+
+          <div class="control">
+            <%= checkbox v, :delete, class: "checkbox" %>
+          </div>
+          <p class="help"><%= error_tag v, :delete %></p>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

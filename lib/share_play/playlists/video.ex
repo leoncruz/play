@@ -8,6 +8,7 @@ defmodule SharePlay.Playlists.Video do
     field :name, :string
     field :url, :string
     belongs_to :playlist, Playlist
+    field :delete, :boolean, virtual: true
 
     timestamps()
   end
@@ -22,7 +23,16 @@ defmodule SharePlay.Playlists.Video do
   @doc false
   def playlist_video_changeset(video, attrs \\ %{}) do
     video
-    |> cast(attrs, [:name, :url])
+    |> cast(attrs, [:name, :url, :delete])
     |> validate_required([:name, :url])
+    |> mark_for_deletion()
+  end
+
+  defp mark_for_deletion(changeset) do
+    if get_change(changeset, :delete) do
+      %{changeset | action: :delete}
+    else
+      changeset
+    end
   end
 end
