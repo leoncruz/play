@@ -1,4 +1,4 @@
-defmodule SharePlay.Repo.Migrations.CreatePlaylits do
+defmodule Play.Repo.Migrations.CreatePlaylits do
   use Ecto.Migration
 
   def change do

@@ -1,6 +1,6 @@
-defmodule SharePlay do
+defmodule Play do
   @moduledoc """
-  SharePlay keeps the contexts that define your domain
+  Play keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

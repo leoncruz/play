@@ -1,12 +1,12 @@
-defmodule SharePlayWeb do
+defmodule PlayWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use SharePlayWeb, :controller
-      use SharePlayWeb, :view
+      use PlayWeb, :controller
+      use PlayWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,11 +19,11 @@ defmodule SharePlayWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: SharePlayWeb
+      use Phoenix.Controller, namespace: PlayWeb
 
       import Plug.Conn
-      import SharePlayWeb.Gettext
-      alias SharePlayWeb.Router.Helpers, as: Routes
+      import PlayWeb.Gettext
+      alias PlayWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -31,7 +31,7 @@ defmodule SharePlayWeb do
     quote do
       use Phoenix.View,
         root: "lib/share_play_web/templates",
-        namespace: SharePlayWeb
+        namespace: PlayWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -45,7 +45,7 @@ defmodule SharePlayWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {SharePlayWeb.LayoutView, "live.html"}
+        layout: {PlayWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
     end
@@ -80,7 +80,7 @@ defmodule SharePlayWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import SharePlayWeb.Gettext
+      import PlayWeb.Gettext
     end
   end
 
@@ -95,9 +95,9 @@ defmodule SharePlayWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import SharePlayWeb.ErrorHelpers
-      import SharePlayWeb.Gettext
-      alias SharePlayWeb.Router.Helpers, as: Routes
+      import PlayWeb.ErrorHelpers
+      import PlayWeb.Gettext
+      alias PlayWeb.Router.Helpers, as: Routes
     end
   end
 

@@ -1,8 +1,8 @@
-defmodule SharePlay.Playlists.Playlist do
+defmodule Play.Playlists.Playlist do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias SharePlay.Playlists.Video
+  alias Play.Playlists.Video
 
   schema "playlists" do
     field :category, :string

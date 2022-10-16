@@ -1,4 +1,4 @@
-defmodule SharePlay.Application do
+defmodule Play.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,20 +9,20 @@ defmodule SharePlay.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      SharePlay.Repo,
+      Play.Repo,
       # Start the Telemetry supervisor
-      SharePlayWeb.Telemetry,
+      PlayWeb.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, name: SharePlay.PubSub},
+      {Phoenix.PubSub, name: Play.PubSub},
       # Start the Endpoint (http/https)
-      SharePlayWeb.Endpoint
-      # Start a worker by calling: SharePlay.Worker.start_link(arg)
-      # {SharePlay.Worker, arg}
+      PlayWeb.Endpoint
+      # Start a worker by calling: Play.Worker.start_link(arg)
+      # {Play.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: SharePlay.Supervisor]
+    opts = [strategy: :one_for_one, name: Play.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -30,7 +30,7 @@ defmodule SharePlay.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    SharePlayWeb.Endpoint.config_change(changed, removed)
+    PlayWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

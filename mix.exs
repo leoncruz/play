@@ -1,4 +1,4 @@
-defmodule SharePlay.MixProject do
+defmodule Play.MixProject do
   use Mix.Project
 
   def project do
@@ -18,7 +18,7 @@ defmodule SharePlay.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {SharePlay.Application, []},
+      mod: {Play.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

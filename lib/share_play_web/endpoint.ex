@@ -1,4 +1,4 @@
-defmodule SharePlayWeb.Endpoint do
+defmodule PlayWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :share_play
 
   # The session will be stored in the cookie and signed,
@@ -46,5 +46,5 @@ defmodule SharePlayWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug SharePlayWeb.Router
+  plug PlayWeb.Router
 end

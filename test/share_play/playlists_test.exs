@@ -1,8 +1,8 @@
-defmodule SharePlay.PlaylistsTest do
-  use SharePlay.DataCase, async: true
+defmodule Play.PlaylistsTest do
+  use Play.DataCase, async: true
 
-  alias SharePlay.Playlists.{Playlist, Video}
-  alias SharePlay.Playlists
+  alias Play.Playlists.{Playlist, Video}
+  alias Play.Playlists
 
   describe "list_videos/0" do
     setup do

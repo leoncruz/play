@@ -1,4 +1,4 @@
-defmodule SharePlay.Repo.Migrations.CreateVideos do
+defmodule Play.Repo.Migrations.CreateVideos do
   use Ecto.Migration
 
   def change do

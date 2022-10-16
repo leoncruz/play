@@ -1,6 +1,6 @@
-defmodule SharePlay.Playlists do
-  alias SharePlay.Repo
-  alias SharePlay.Playlists.{Video, Playlist}
+defmodule Play.Playlists do
+  alias Play.Repo
+  alias Play.Playlists.{Video, Playlist}
 
   import Ecto.Query
 

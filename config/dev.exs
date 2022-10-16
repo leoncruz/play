@@ -1,7 +1,7 @@
 import Config
 
 # Configure your database
-config :share_play, SharePlay.Repo,
+config :share_play, Play.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
@@ -16,7 +16,7 @@ config :share_play, SharePlay.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with esbuild to bundle .js and .css sources.
-config :share_play, SharePlayWeb.Endpoint,
+config :share_play, PlayWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -54,7 +54,7 @@ config :share_play, SharePlayWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :share_play, SharePlayWeb.Endpoint,
+config :share_play, PlayWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",

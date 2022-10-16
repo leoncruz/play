@@ -1,8 +1,8 @@
-defmodule SharePlay.Playlists.PlaylistTest do
-  use SharePlay.DataCase, async: true
+defmodule Play.Playlists.PlaylistTest do
+  use Play.DataCase, async: true
 
   alias Ecto.Changeset
-  alias SharePlay.Playlists.Playlist
+  alias Play.Playlists.Playlist
 
   describe "changeset/1" do
     setup do

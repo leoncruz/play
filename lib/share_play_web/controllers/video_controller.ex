@@ -1,9 +1,9 @@
-defmodule SharePlayWeb.VideoController do
-  use SharePlayWeb, :controller
+defmodule PlayWeb.VideoController do
+  use PlayWeb, :controller
 
-  alias SharePlay.Playlists
-  alias SharePlay.Playlists.Video
-  alias SharePlay.Repo
+  alias Play.Playlists
+  alias Play.Playlists.Video
+  alias Play.Repo
 
   def index(conn, _params) do
     videos = Playlists.list_videos()

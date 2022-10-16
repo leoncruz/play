@@ -8,13 +8,13 @@
 import Config
 
 config :share_play,
-  ecto_repos: [SharePlay.Repo]
+  ecto_repos: [Play.Repo]
 
 # Configures the endpoint
-config :share_play, SharePlayWeb.Endpoint,
+config :share_play, PlayWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: SharePlayWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: SharePlay.PubSub,
+  render_errors: [view: PlayWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Play.PubSub,
   live_view: [signing_salt: "wARDl3wI"]
 
 # Configures the mailer
@@ -24,7 +24,7 @@ config :share_play, SharePlayWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :share_play, SharePlay.Mailer, adapter: Swoosh.Adapters.Local
+config :share_play, Play.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

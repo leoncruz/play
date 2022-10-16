@@ -1,5 +1,5 @@
-defmodule SharePlayWeb.ErrorView do
-  use SharePlayWeb, :view
+defmodule PlayWeb.ErrorView do
+  use PlayWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

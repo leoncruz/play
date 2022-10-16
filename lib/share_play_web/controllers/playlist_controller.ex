@@ -1,8 +1,8 @@
-defmodule SharePlayWeb.PlaylistController do
-  use SharePlayWeb, :controller
+defmodule PlayWeb.PlaylistController do
+  use PlayWeb, :controller
 
-  alias SharePlay.Playlists
-  alias SharePlay.Playlists.{Playlist, Video}
+  alias Play.Playlists
+  alias Play.Playlists.{Playlist, Video}
 
   def index(conn, _params) do
     playlists = Playlists.list_playlists()

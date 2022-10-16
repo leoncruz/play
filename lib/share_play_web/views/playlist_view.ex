@@ -1,7 +1,7 @@
-defmodule SharePlayWeb.PlaylistView do
-  use SharePlayWeb, :view
+defmodule PlayWeb.PlaylistView do
+  use PlayWeb, :view
 
-  alias SharePlay.Playlists.{Playlist, Video}
+  alias Play.Playlists.{Playlist, Video}
 
   def link_to_add_video_fields do
     changeset =

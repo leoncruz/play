@@ -1,11 +1,11 @@
-defmodule SharePlayWeb.Router do
-  use SharePlayWeb, :router
+defmodule PlayWeb.Router do
+  use PlayWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {SharePlayWeb.LayoutView, :root}
+    plug :put_root_layout, {PlayWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -14,7 +14,7 @@ defmodule SharePlayWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", SharePlayWeb do
+  scope "/", PlayWeb do
     pipe_through :browser
 
     get "/", PlaylistController, :index
@@ -23,7 +23,7 @@ defmodule SharePlayWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SharePlayWeb do
+  # scope "/api", PlayWeb do
   #   pipe_through :api
   # end
 
@@ -40,7 +40,7 @@ defmodule SharePlayWeb.Router do
     scope "/" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: SharePlayWeb.Telemetry
+      live_dashboard "/dashboard", metrics: PlayWeb.Telemetry
     end
   end
 

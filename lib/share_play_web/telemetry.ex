@@ -1,4 +1,4 @@
-defmodule SharePlayWeb.Telemetry do
+defmodule PlayWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -65,7 +65,7 @@ defmodule SharePlayWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {SharePlayWeb, :count_users, []}
+      # {PlayWeb, :count_users, []}
     ]
   end
 end

@@ -1,4 +1,4 @@
-defmodule SharePlay.Repo.Migrations.AddPlaylistIdToVideo do
+defmodule Play.Repo.Migrations.AddPlaylistIdToVideo do
   use Ecto.Migration
 
   def change do

@@ -1,3 +1,3 @@
-defmodule SharePlayWeb.VideoView do
-  use SharePlayWeb, :view
+defmodule PlayWeb.VideoView do
+  use PlayWeb, :view
 end

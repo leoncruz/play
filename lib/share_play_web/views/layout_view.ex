@@ -1,5 +1,5 @@
-defmodule SharePlayWeb.LayoutView do
-  use SharePlayWeb, :view
+defmodule PlayWeb.LayoutView do
+  use PlayWeb, :view
 
   # Phoenix LiveDashboard is available only in development by default,
   # so we instruct Elixir to not warn if the dashboard route is missing.
