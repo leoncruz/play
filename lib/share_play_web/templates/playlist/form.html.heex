@@ -1,0 +1,37 @@
+<%= form_for @changeset, @route, fn f -> %>
+  <div class="columns is-centered">
+    <div class="column is-6">
+      <div class="field">
+        <%= label f, :name, class: "label" %>
+
+        <div class="control">
+          <%= text_input f, :name, class: "input" %>
+        </div>
+        <p class="help"><%= error_tag f, :name %></p>
+      </div>
+
+      <div class="field">
+        <%= label f, :category, class: "label" %>
+
+        <div class="control">
+          <%= text_input f, :category, class: "input" %>
+        </div>
+        <p class="help"><%= error_tag f, :category %></p>
+      </div>
+
+      <div class="level">
+        <div class="level-left">
+          <%= submit "Submit", class: "button has-text-white-bis has-background-black-bis" %>
+        </div>
+
+        <div class="level-right">
+          <%= link_to_add_video_fields() %>
+        </div>
+      </div>
+
+      <div id="videos-container">
+        <%= render "video_fields.html", f: f %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -38,6 +38,30 @@ defmodule SharePlayWeb.PlaylistController do
     render(conn, "show.html", playlist: playlist)
   end
 
+  def edit(conn, %{"id" => playlist_id}) do
+    playlist = Playlists.get_playlist(playlist_id)
+
+    playlist_changeset =
+      playlist
+      |> Playlists.playlist_changeset()
+
+    render(conn, "edit.html", playlist: playlist, playlist_changeset: playlist_changeset)
+  end
+
+  def update(conn, %{"id" => id, "playlist" => plalist_params}) do
+    case Playlists.update_playlist(id, plalist_params) do
+      {:ok, playlist} ->
+        conn
+        |> put_flash(:info, "Playlist updated sucessfully")
+        |> redirect(to: Routes.playlist_path(conn, :show, playlist))
+
+      {:error, changeset} ->
+        conn
+        |> put_flash(:alert, "Playlist cannot be updated")
+        |> render("edit.html", conn: conn, plalist: changeset)
+    end
+  end
+
   def delete(conn, %{"id" => playlist_id}) do
     case Playlists.delete_playlist(playlist_id) do
       :ok ->

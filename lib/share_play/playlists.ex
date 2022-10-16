@@ -62,6 +62,13 @@ defmodule SharePlay.Playlists do
     |> Repo.preload(:videos)
   end
 
+  def update_playlist(id, params) do
+    Repo.get(Playlist, id)
+    |> Repo.preload(:videos)
+    |> playlist_changeset(params)
+    |> Repo.update()
+  end
+
   def delete_playlist(id) do
     playlist = get_playlist(id)
 

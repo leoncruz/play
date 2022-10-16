@@ -1,0 +1,8 @@
+<section class="hero">
+  <div class="hero-body">
+    <p class="title"><%= @playlist.name %></p>
+    <p><%= link("back", to: Routes.playlist_path(@conn, :index)) %></p>
+  </div>
+</section>
+
+<%= render "form.html", changeset: @playlist_changeset, route: Routes.playlist_path(@conn, :update, @playlist) %>
